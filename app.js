@@ -7,11 +7,11 @@ const p1 = {
 const p2 = {
     score: 0,
     button: document.querySelector('#p2Button'),
-    display: document.querySelector('#p2Score');
+    display: document.querySelector('#p2Score')
 }
 
 const reset = document.querySelector('#reset');
-const levels = document.querySelector('#levels');
+const levels = document.querySelector('#levels');   
 let winningScore = 5;
 let isGameOver = false;
 
@@ -46,12 +46,10 @@ reset.addEventListener('click', resetGame);
 
 function resetGame() {
     isGameOver = false;
-    playerOneScore = 0;
-    playerTwoScore = 0;
-    p1Score.textContent = 0;
-    p2Score.textContent = 0;
-    p1Score.classList.remove('has-text-success', 'has-text-danger');
-    p2Score.classList.remove('has-text-success', 'has-text-danger');
-    p1Button.disabled = false;
-    p2Button.disabled = false;
+    for(let p of [p1, p2]) {
+        p.score = 0;
+        p.display.textContent = 0;
+        p.display.classList.remove('has-text-success', 'has-text-danger');
+        p.button.disabled = false;
+    }
 }
