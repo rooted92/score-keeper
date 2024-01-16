@@ -3,10 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>Score Keeper</title>
 </head>
 <body>
     <h1><span id="p1Score">0</span> to <span id="p2Score">0</span></h1>
+    <select name="levels" id="levels">
+        <option value="3">3</option>
+        <option value="5" selected>5</option>
+        <option value="7">7</option>
+        <option value="10">10</option>
+    </select>
     <button id="p1Button">P1 Button</button>
     <button id="p2Button">P2 Button</button>
     <button id="reset">Reset</button>
