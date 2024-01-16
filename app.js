@@ -1,42 +1,40 @@
-const p1Button = document.querySelector('#p1Button');
-const p2Button = document.querySelector('#p2Button');
-const p1Score = document.querySelector('#p1Score');
-const p2Score = document.querySelector('#p2Score');
+const p1 = {
+    score: 0,
+    button: document.querySelector('#p1Button'),
+    display: document.querySelector('#p1Score')
+}
+
+const p2 = {
+    score: 0,
+    button: document.querySelector('#p2Button'),
+    display: document.querySelector('#p2Score');
+}
+
 const reset = document.querySelector('#reset');
 const levels = document.querySelector('#levels');
-
-let playerOneScore = 0;
-let playerTwoScore = 0;
-
 let winningScore = 5;
 let isGameOver = false;
 
-p1Button.addEventListener('click', function () {
+function updateScores(player, opponent) {
     if (!isGameOver) {
-        playerOneScore++;
-        if (playerOneScore === winningScore) {
+        player.score++;
+        if (player.score === winningScore) {
             isGameOver = true;
-            p1Score.classList.add('has-text-success');
-            p2Score.classList.add('has-text-danger');
-            p1Button.disabled = true;
-            p2Button.disabled = true;
+            player.display.classList.add('has-text-success');
+            opponent.display.classList.add('has-text-danger');
+            player.disabled = true;
+            opponent.disabled = true;
         }
-        p1Score.textContent = playerOneScore;
+        player.display.textContent = player.score;
     }
+};
+
+p1.button.addEventListener('click', function () {
+    updateScores(p1, p2);
 });
 
-p2Button.addEventListener('click', function () {
-    if (!isGameOver) {
-        playerTwoScore++;
-        if (playerTwoScore === winningScore) {
-            isGameOver = true;
-            p2Score.classList.add('has-text-success');
-            p1Score.classList.add('has-text-danger');
-            p2Button.disabled = true;
-            p1Button.disabled = true;
-        }
-        p2Score.textContent = playerTwoScore;
-    }
+p2.button.addEventListener('click', function () {
+    updateScores(p2, p1);
 });
 
 levels.addEventListener('change', function () {
